@@ -15,15 +15,44 @@ enum PropertyType {
   CONDO
 }
 
-model Home {
-  id                       Int @id @default(autoincrement())
-  address                  String
-  number_of_bedrooms       Int
-  number_of_bathrooms      Float
-  city                     String
-  listed_date              DateTime @default(now())
-  price                    Float
-  land_size                Float
-  property_type            PropertyType
+enum UserType {
+  BUYER
+  REALTOR
 }
 
+model User {
+  id         Int      @id @default(autoincrement())
+  name       String
+  phone      String
+  email      String
+  password   String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  user_type  UserType
+}
+
+model Home {
+  id                  Int          @id @default(autoincrement())
+  address             String
+  number_of_bedrooms  Int
+  number_of_bathrooms Float
+  city                String
+  listed_date         DateTime     @default(now())
+  price               Float
+  land_size           Float
+  property_type       PropertyType
+  created_at          DateTime     @default(now())
+  updated_at          DateTime     @updatedAt
+}
+
+model Image {
+  id         Int      @id @default(autoincrement())
+  url        String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
+
+model Message {
+  id      Int    @id @default(autoincrement())
+  message String
+}
