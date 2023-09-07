@@ -4,3 +4,5 @@ export interface ISignUpParmas {
   password: string;
   phone: string;
 }
+
+export type ISignInParams = Pick<ISignUpParmas, 'email' | 'password'>;
